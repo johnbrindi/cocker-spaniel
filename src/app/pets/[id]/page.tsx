@@ -103,7 +103,7 @@ export default async function PetDetailPage({ params }: PageProps) {
                         }}
                     >
                         <Image
-                            src={pet.imageUrl}
+                            src={pet.imageUrls[0]}
                             alt={`${pet.name} main`}
                             fill
                             style={{ objectFit: "cover" }}
@@ -112,9 +112,8 @@ export default async function PetDetailPage({ params }: PageProps) {
                         />
                     </div>
 
-                    {/* Thumbnail strip (duplicate for demo — production: multiple image URLs) */}
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px" }}>
-                        {[pet.imageUrl, pet.imageUrl, pet.imageUrl].map((src, i) => (
+                    <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(pet.imageUrls.length, 5)}, 1fr)`, gap: "1px" }}>
+                        {pet.imageUrls.map((src, i) => (
                             <div
                                 key={i}
                                 style={{
