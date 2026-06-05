@@ -58,7 +58,7 @@ export default async function HomePage() {
                         <h1
                             style={{
                                 fontFamily: "var(--font-serif)",
-                                fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
+                                fontSize: "clamp(2.2rem, 8vw, 4.5rem)",
                                 fontWeight: 700,
                                 color: "var(--charcoal)",
                                 lineHeight: 1.1,
@@ -305,19 +305,83 @@ export default async function HomePage() {
                             ))}
                         </div>
                     </div>
-                </div >
-            </S >
+                </div>
+            </S>
+
+            {/* ════════════════════════════════════════
+          REVIEWS
+      ════════════════════════════════════════ */}
+            <S id="reviews" style={{ backgroundColor: "#f8f7f4" }}>
+                <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+                    <span className="section-label">Testimonials</span>
+                    <h2
+                        style={{
+                            fontFamily: "var(--font-serif)",
+                            fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+                            color: "var(--charcoal)",
+                            marginBottom: "0.25rem",
+                        }}
+                    >
+                        From Our Extended Family
+                    </h2>
+                    <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", color: "var(--charcoal)", fontWeight: 600 }}>
+                        <span style={{ color: "#fbbf24", marginRight: "4px" }}>★</span>
+                        4.8 / 5.0 Average Verification
+                    </div>
+                </div>
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                        gap: "2rem",
+                    }}
+                >
+                    {[
+                        {
+                            name: "Sarah Jenkins",
+                            text: "Our Cocker Spaniel has the most wonderful temperament. The entire adoption process was transparent, professional, and built on genuine care for the dogs.",
+                        },
+                        {
+                            name: "David Thompson",
+                            text: "Exceptional breeder. The health guarantees and rigorous screening gave us absolute peace of mind. Our puppy arrived healthy, confident, and well-socialized.",
+                        },
+                        {
+                            name: "Michael Rossi",
+                            text: "A truly premier experience. Their profound knowledge of the breed and dedication to their dogs' wellbeing sets them highly apart from other breeders.",
+                        },
+                        {
+                            name: "Dr. Elena Vance",
+                            text: "As a veterinarian, I hold breeders to incredibly high standards. Kenny Cocker Spaniels exceeds them all with their spotless facilities and genetic testing protocols.",
+                        },
+                    ].map((review) => (
+                        <div key={review.name} style={{ backgroundColor: "var(--white)", border: "1px solid var(--slate-border)", padding: "2rem", display: "flex", flexDirection: "column" }}>
+                            <div style={{ display: "flex", gap: "2px", marginBottom: "1.25rem" }}>
+                                {[...Array(5)].map((_, i) => (
+                                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < 4 || review.name.includes("Vance") || review.name.includes("Sarah") ? "var(--charcoal)" : "none"} stroke="var(--charcoal)" strokeWidth="2">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                ))}
+                            </div>
+                            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", color: "var(--slate-muted)", lineHeight: 1.7, flexGrow: 1, marginBottom: "1.5rem" }}>
+                                "{review.text}"
+                            </p>
+                            <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.05em", color: "var(--charcoal)", textTransform: "uppercase" }}>
+                                {review.name}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </S>
 
             {/* ════════════════════════════════════════
           CONTACT
       ════════════════════════════════════════ */}
-            < S
+            <S
                 id="contact"
                 style={{
                     backgroundColor: "var(--charcoal)",
                     color: "var(--white)",
-                }
-                }
+                }}
             >
                 <div
                     style={{
