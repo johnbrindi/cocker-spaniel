@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* ── Google Fonts ─────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+/* ── Design Tokens ────────────────────────────────── */
+:root {
+  --charcoal: #111827;
+  --white: #ffffff;
+  --cobalt: #1d4ed8;
+  --cobalt-hover: #1e40af;
+  --slate-border: #e2e8f0;
+  --slate-muted: #94a3b8;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* ── Base Reset ───────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--charcoal);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Typography ───────────────────────────────────── */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Ticker / Marquee ─────────────────────────────── */
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 60s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Utility ──────────────────────────────────────── */
+.serif {
+  font-family: var(--font-serif);
+}
+
+.sans {
+  font-family: var(--font-sans);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: var(--charcoal);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--charcoal);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--cobalt);
+  border-color: var(--cobalt);
+}
+
+.btn-primary:active {
+  background-color: var(--cobalt-hover);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--charcoal);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+  background-color: var(--charcoal);
+  color: var(--white);
+}
+
+.btn-outline:active {
+  background-color: #1f2937;
+  color: var(--white);
+}
+
+.hover-white {
+  transition: color 0.2s;
+}
+
+.hover-white:hover {
+  color: var(--white) !important;
+}
+
+.hover-blue {
+  transition: color 0.2s;
+}
+
+.hover-blue:hover {
+  color: #93c5fd !important;
+}
+
+/* ── Section Divider ──────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 1rem;
+}
+
+/* ── Responsive Grids ─────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-image-panel {
+    min-height: 300px !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
