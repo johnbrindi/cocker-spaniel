@@ -90,10 +90,9 @@ export default async function HomePage() {
                             </a>
                         </div>
                     </div>
-                </div>
 
-                {/* Right - image */}
-                <div className="hero-image-panel" style={{ position: "relative", width: "100%", height: "100%", minHeight: "500px", overflow: "hidden" }}>
+                    {/* Right - image */}
+                    <div className="hero-image-panel" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
                     <Image
                         src="/hero-dog.jpg"
                         alt="Cocker Spaniel portrait"
@@ -101,6 +100,7 @@ export default async function HomePage() {
                         style={{ objectFit: "cover" }}
                         priority
                     />
+                    </div>
                 </div>
             </section>
 

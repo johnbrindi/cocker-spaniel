@@ -185,16 +185,16 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         }
 
         setIsLoading(true);
-        if (images.length === 0) {
-            alert("Please upload at least 1 image");
-            return;
+        try {
+            const newPet = await addPet({ ...form, imageUrls: images });
+            setPets([newPet, ...pets]);
+            resetForm();
+            setSuccess(`"${newPet.name}" has been added successfully.`);
+            setTimeout(() => setSuccess(""), 4000);
+        } catch (err: any) {
+            alert(err?.message || "Failed to add listing. Please try again.");
+            setIsLoading(false);
         }
-        setIsLoading(true);
-        const newPet = await addPet({ ...form, imageUrls: images });
-        setPets([newPet, ...pets]);
-        resetForm();
-        setSuccess(`"${newPet.name}" has been added successfully.`);
-        setTimeout(() => setSuccess(""), 4000);
     }
 
     async function handleUpdate(e: React.FormEvent) {
@@ -204,11 +204,16 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
             return;
         }
         setIsLoading(true);
-        const updatedPet = await updatePet(editingId!, { ...form, imageUrls: images });
-        setPets(pets.map(p => p.id === editingId ? updatedPet : p));
-        resetForm();
-        setSuccess(`"${updatedPet.name}" has been updated successfully.`);
-        setTimeout(() => setSuccess(""), 4000);
+        try {
+            const updatedPet = await updatePet(editingId!, { ...form, imageUrls: images });
+            setPets(pets.map(p => p.id === editingId ? updatedPet : p));
+            resetForm();
+            setSuccess(`"${updatedPet.name}" has been updated successfully.`);
+            setTimeout(() => setSuccess(""), 4000);
+        } catch (err: any) {
+            alert(err?.message || "Failed to update listing. Please try again.");
+            setIsLoading(false);
+        }
     }
 
     function resetForm() {

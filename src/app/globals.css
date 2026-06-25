@@ -154,6 +154,18 @@ a {
   color: #93c5fd !important;
 }
 
+/* ── Custom Component Styles ──────────────────────── */
+.hero-image-panel {
+  border-radius: 12rem 12rem 2rem 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  aspect-ratio: 4/5;
+}
+
+.hero-image-panel:hover {
+  transform: translateY(-5px);
+}
+
 /* ── Section Divider ──────────────────────────────── */
 .section-label {
   display: inline-block;
@@ -173,7 +185,10 @@ a {
   }
 
   .hero-image-panel {
-    min-height: 300px !important;
+    min-height: 400px !important;
+    border-radius: 8rem 8rem 1.5rem 1.5rem !important;
+    width: 90% !important;
+    margin: 0 auto !important;
   }
 
   .about-grid {
